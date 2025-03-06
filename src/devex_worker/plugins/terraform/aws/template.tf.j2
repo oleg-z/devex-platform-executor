@@ -1,0 +1,12 @@
+provider:
+  aws:
+    - alias: default
+      {% for key, value in properties["provider_properties"].items() -%}
+      "{{key}}": {{value | tojson}}
+      {% endfor %}
+
+module:
+  external_module:
+    {% for key, value in properties["module_properties"].items() -%}
+    "{{key}}": {{value | tojson}}
+    {% endfor %}
